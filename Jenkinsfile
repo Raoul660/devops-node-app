@@ -32,6 +32,13 @@ pipeline {
                 echo 'Build completed successfully'
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                bat 'docker build -t raoul00/devops-node-app:1.0 .'
+                echo 'Docker image built successfully'
+            }
+        }
     }
 
     post {
