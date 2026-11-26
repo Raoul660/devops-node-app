@@ -64,6 +64,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy to Local Docker Host') {
+            steps {
+                bat 'docker rm -f devops-node-app || exit /b 0'
+                bat 'docker run -d --name devops-node-app -p 8081:3000 raoul00/devops-node-app:1.0'
+            }
+        }
     }
 
     post {
